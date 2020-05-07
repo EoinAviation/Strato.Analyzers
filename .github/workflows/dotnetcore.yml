@@ -24,4 +24,4 @@ jobs:
         dotnet pack --configuration Release /p:NuspecFile=Strato.Analyzers.nuspec
         
     - name: Deploy
-      run: dotnet nuget push ./Strato.Analyzers/bin/Release/*.nupkg --skip-duplicate --api-key ${{ NUGET_API_KEY }}
+      run: dotnet nuget push ./Strato.Analyzers/bin/Release/*.nupkg --skip-duplicate --api-key ${{ secrets.NUGET_API_KEY }}
