@@ -17,9 +17,6 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
-        source-url: https://nuget.pkg.github.com/eoinaviation/index.json
-      env:
-        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
     
     - name: Pack
       run: |
@@ -27,4 +24,4 @@ jobs:
         dotnet pack --configuration Release /p:NuspecFile=Strato.Analyzers.nuspec
         
     - name: Deploy
-      run: dotnet nuget push ./Strato.Analyzers/bin/Release/*.nupkg --skip-duplicate
+      run: dotnet nuget push ./Strato.Analyzers/bin/Release/*.nupkg --skip-duplicate --api-key ${{ NUGET_API_KEY }}
